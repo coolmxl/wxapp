@@ -1,0 +1,30 @@
+<view class="cates">
+	<SearchInput></SearchInput>
+	<view class="cates_container">
+		<!-- 左侧菜单 -->
+		<scroll-view scroll-y class="left_menu">
+			<view class="menu_item {{index===currentIndex?'active':''}}" wx:for="{{leftMenuList}}" wx:key="*this" bindtap="handleItemTap" data-index1="{{index}}" data-index2="{{item}}">
+				{{item}}
+			</view>
+		</scroll-view>
+		<!-- 右侧商品内容 -->
+		<scroll-view scroll-top="{{scrollTop}}" scroll-y class="right_content">
+			<view class="goods_group" style="display: flex;flex-wrap: wrap;">
+				<view class="my-box"
+        	wx:for="{{rightContent}}"
+					wx:for-index="index1"
+					wx:for-item="item1">
+
+					<navigator class="box" url="/pages/goods_detail/index?id={{item1.b_id}}">
+						<view class="box-img">
+							<image src="{{item1.b_bookimg[0]}}"></image>
+						</view>
+						<view>
+							<view class="goods_name"> {{item1.b_title}}</view>
+						</view>
+					</navigator>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+</view>
